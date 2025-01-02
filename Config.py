@@ -1,0 +1,4 @@
+class Config:
+  APP_NAME = 'STOCK PRICE PREDICTOR'
+  APP_ICON = '🔬'
+  APP_VERSION = 1.0
