@@ -4,9 +4,9 @@ from Config import Config
 
 def menu():
   st.sidebar.page_link('app.py', label='Trang chính')
-  st.sidebar.page_link('pages/data.py', label='Thu thập & xử lý dữ liệu')
-  st.sidebar.page_link('pages/model.py', label='Xây dựng mô hình')
-  st.sidebar.page_link('pages/evaluation.py', label='Đánh giá mô hình')
+  st.sidebar.page_link('pages/Analyse_Data.py', label='Phân tích dữ liệu')
+  st.sidebar.page_link('pages/Customization.py', label='Xây dựng mô hình')
+  st.sidebar.page_link('pages/Evaluation.py', label='Đánh giá mô hình')
 
 
 if __name__ == '__main__':
@@ -36,7 +36,7 @@ if __name__ == '__main__':
       <ul style="font-size:18px; text-align:justify; list-style-type:disc; line-height:32px;">
 
         1. Lựa chọn khoảng thông tin cụ thể(thời gian, mã cổ phiếu) để thu thập dữ liệu giá cổ phiếu của công ty.
-        2. Thu thập dữ liệu: Dữ liệu giá cổ phiếu của công ty được chọn (sử dụng API Yahoo Finance (yfinance)) trong khoảng năm được chọn.
+        2. Thu thập dữ liệu: Dữ liệu giá cổ phiếu của công ty được chọn (sử dụng API Yahoo Finance (yfinance)) trong khoảng thời gian được chọn.
         3. Tiền xử lý dữ liệu: Loại bỏ dữ liệu thiếu, chuẩn hóa dữ liệu, chia dữ liệu thành tập huấn luyện và tập kiểm tra.
         4. Xây dựng & sử dụng mô hình mô hình hồi quy tuyến tính để dự đoán giá cổ phiếu.
         5. Đánh giá mô hình thông qua các đánh giá mô hình.
