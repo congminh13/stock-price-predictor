@@ -20,15 +20,21 @@ class BasicSPPModule:
     self.y_pred = None
 
   def fetch_data(self):
-    self.data = yf.download(self.stock_symbol, period=self.period, progress=False)
-    self.data['Days'] = np.arange(len(self.data))
-    return self.data
+    try:
+      self.data = yf.download(self.stock_symbol, period=self.period, progress=False)
+      if self.data.empty:
+        raise ValueError("No data fetched. Please check the stock symbol or period.")
+      self.data['Days'] = np.arange(len(self.data))
+      return self.data
+    except Exception as e:
+      st.error(f"Error fetching data: {e}")
+      return None
 
   def prepare_data(self):
     X = self.data[['Days']]
     y = self.data['Close']
+    self.data.dropna(inplace=True)
       
-    # Train-test split
     train_days = int(len(self.data) * self.train_ratio)
     self.X_train = X[:train_days]
     self.X_test = X[train_days:]
@@ -49,7 +55,7 @@ class BasicSPPModule:
     return {"MSE": mse, "MAE": mae, "R2": r2}
 
   def visualize(self):
-    plt.figure(figsize=(14, 8))
+    plt.figure(figsize=(14, 6))
     plt.plot(self.data['Days'], self.data['Close'], label="Actual Prices", color="blue", marker="o")
     plt.plot(self.X_train['Days'], self.model.predict(self.X_train), label="Predicted Prices (Training)", color="orange", linestyle="--")
     plt.plot(self.X_test['Days'], self.y_pred, label="Predicted Prices", color="red", linestyle="--")

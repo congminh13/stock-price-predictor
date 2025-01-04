@@ -53,7 +53,6 @@ class ImprovedSPPModule:
   def prepare_data(self):
     self.data['RSI'] = self.calculate_rsi(self.data)
     self.data['MACD'], self.data['Signal Line'] = self.calculate_macd(self.data)
-
     self.data.dropna(inplace=True)
 
     X = self.data[['Days', 'RSI', 'MACD']]
@@ -79,7 +78,7 @@ class ImprovedSPPModule:
     return {"MSE": mse, "MAE": mae, "R2": r2}
 
   def visualize(self):
-    plt.figure(figsize=(14, 8))
+    plt.figure(figsize=(14, 6))
     plt.plot(self.data['Days'], self.data['Close'], label="Actual Prices", color="blue", marker="o")
     plt.plot(self.X_train['Days'], self.model.predict(self.X_train), label="Predicted Prices (Training)", color="green", linestyle="--")
     plt.plot(self.X_test['Days'], self.y_pred, label="Predicted Prices", color="purple", linestyle="--")

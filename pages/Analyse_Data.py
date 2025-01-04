@@ -5,8 +5,9 @@ import pandas as pd
 from models.BasicSPPModule import BasicSPPModule as BSPPM
 
 st.set_page_config(
-    page_title=Config.APP_NAME,
-    page_icon=Config.APP_ICON
+  page_title=Config.APP_NAME,
+  page_icon=Config.APP_ICON,
+  layout='wide'
 )
 menu()
 
@@ -22,15 +23,13 @@ bspp = BSPPM(stock_symbol, period, train_ratio)
 raw_data = bspp.fetch_data()
 processed_data = bspp.prepare_data()
 
-st.subheader('__Dữ liệu giá cổ phiếu được chọn trong khoảng thời gian qua:__')
+with st.expander("__Dữ liệu giá cổ phiếu được chọn trong khoảng thời gian qua:__"):
+  st.write("**Dữ liệu gốc (raw data):**")
+  st.dataframe(raw_data)
 
-st.write("**Dữ liệu gốc (raw data):**")
-st.dataframe(raw_data)
-
-st.subheader('Dữ liệu giá cổ phiếu được chọn sau khi lọc và bỏ qua các dữ liệu khác ngoài Close(giá đóng cửa):')
-
-st.write("**Dữ liệu đã xử lý (processed data):**")
-st.dataframe(raw_data[['Close']])
+with st.expander("__Dữ liệu giá cổ phiếu được chọn sau khi lọc và bỏ qua các dữ liệu khác ngoài Close(giá đóng cửa):__"):
+  st.write("**Dữ liệu đã xử lý (processed data):**")
+  st.dataframe(raw_data[['Close']])
 
 st.subheader('___Xây dựng mô hình hồi quy tuyến tính:___')
 

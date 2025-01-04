@@ -2,8 +2,9 @@ import streamlit as st
 from app import menu
 from Config import Config
 st.set_page_config(
-    page_title=Config.APP_NAME,
-    page_icon=Config.APP_ICON
+  page_title=Config.APP_NAME,
+  page_icon=Config.APP_ICON,
+  layout="wide"
 )
 menu()
 
@@ -17,7 +18,6 @@ st.markdown(
   """
 )
 
-# RSI Equation
 st.subheader("___RSI (Relative Strength Index):___")
 st.markdown("RSI (Relative Strength Index) là một chỉ báo kỹ thuật phổ biến, được sử dụng để đo lường sức mạnh tương đối của giá cổ phiếu qua các chu kỳ gần đây.")
 st.latex(r"""
@@ -26,22 +26,21 @@ st.latex(r"""
 
 st.markdown("___Thiết lập mã:___")
 st.code(
-    """
-    @staticmethod
-    def calculate_rsi(data, period=14):
-      delta = data['Close'].diff(1)
-      gain = delta.where(delta > 0, 0)
-      loss = -delta.where(delta < 0, 0)
-      avg_gain = gain.rolling(window=period).mean()
-      avg_loss = loss.rolling(window=period).mean()
-      rs = avg_gain / avg_loss
-      rsi = 100 - (100 / (1 + rs))
-      return rsi
-    """,
-    language="python"
+  """
+  @staticmethod
+  def calculate_rsi(data, period=14):
+    delta = data['Close'].diff(1)
+    gain = delta.where(delta > 0, 0)
+    loss = -delta.where(delta < 0, 0)
+    avg_gain = gain.rolling(window=period).mean()
+    avg_loss = loss.rolling(window=period).mean()
+    rs = avg_gain / avg_loss
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+  """,
+  language="python"
 )
 
-# MACD Equation
 st.subheader("***MACD (Moving Average Convergence Divergence):***")
 st.markdown("MACD (Moving Average Convergence Divergence) là một chỉ báo dao động, giúp đánh giá mối quan hệ giữa hai đường trung bình động theo thời gian.")
 st.latex(r"""
@@ -50,16 +49,16 @@ st.latex(r"""
 
 st.markdown("___Thiết lập mã:___")
 st.code(
-    """
-    @staticmethod
-    def calculate_macd(data, short_window=12, long_window=26, signal_window=9):
-      short_ema = data['Close'].ewm(span=short_window, adjust=False).mean()
-      long_ema = data['Close'].ewm(span=long_window, adjust=False).mean()
-      macd = short_ema - long_ema
-      signal_line = macd.ewm(span=signal_window, adjust=False).mean()
-      return macd, signal_line
-    """,
-    language="python"
+  """
+  @staticmethod
+  def calculate_macd(data, short_window=12, long_window=26, signal_window=9):
+    short_ema = data['Close'].ewm(span=short_window, adjust=False).mean()
+    long_ema = data['Close'].ewm(span=long_window, adjust=False).mean()
+    macd = short_ema - long_ema
+    signal_line = macd.ewm(span=signal_window, adjust=False).mean()
+    return macd, signal_line
+  """,
+  language="python"
 )
 st.subheader("***Xây dụng mô hình:***")
 st.markdown(
