@@ -51,8 +51,9 @@ class BasicSPPModule:
   def visualize(self):
     plt.figure(figsize=(14, 8))
     plt.plot(self.data['Days'], self.data['Close'], label="Actual Prices", color="blue", marker="o")
+    plt.plot(self.X_train['Days'], self.model.predict(self.X_train), label="Predicted Prices (Training)", color="orange", linestyle="--")
     plt.plot(self.X_test['Days'], self.y_pred, label="Predicted Prices", color="red", linestyle="--")
-    plt.axvline(x=self.X_test['Days'].iloc[0], color="green", linestyle="--", label="Train-Test Split")
+    plt.axvline(x=self.X_test['Days'].iloc[0], color="grey", linestyle="--", label="Train-Test Split")
     plt.xlabel("Days")
     plt.ylabel("Stock Closing Price")
     plt.title(f"Stock Price Prediction for {self.stock_symbol}")

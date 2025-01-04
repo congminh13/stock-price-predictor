@@ -5,7 +5,7 @@ from Config import Config
 def menu():
   st.sidebar.page_link('app.py', label='Trang chính')
   st.sidebar.page_link('pages/Analyse_Data.py', label='Phân tích dữ liệu')
-  st.sidebar.page_link('pages/Customization.py', label='Xây dựng mô hình')
+  st.sidebar.page_link('pages/Customization.py', label='Xây dựng mô hình cải tiến')
   st.sidebar.page_link('pages/Evaluation.py', label='Đánh giá mô hình')
 
 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
   st.markdown(
       """
         <p style="font-size:18px; text-align:justify;">
-        Phân tích độ hiệu quả & tính khả thi của mô hình hồi quy tuyến tính(Linear Regression) trong việc dự đoán giá cổ phiếu.
+        Phân tích độ hiệu quả & tính khả thi của mô hình hồi quy tuyến tính(Linear Regression) trong việc dự đoán giá cổ phiếu & xây dựng mô hình cải tiến.
         </p>
         """,
       unsafe_allow_html=True

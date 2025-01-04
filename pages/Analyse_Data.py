@@ -12,9 +12,12 @@ menu()
 
 st.title('Phân tích các dữ liệu có thể xử lý & đưa ra dự đoán')
 
+st.write("Các mã cổ phiếu phổ biến:")
+st.markdown("""AAPL, MSFT, GOOGL, AMZN, TSLA, NVDA, META, JPM, V, KO, PEP, DIS, NFLX, INTC""")
 stock_symbol = st.text_input("Nhập mã cổ phiếu", "AAPL")
 period = st.selectbox("Chọn khoảng thời gian", ["3mo", "6mo", "1y", "2y", "5y"])
 train_ratio = st.slider("Chọn tỷ lệ huấn luyện", min_value=0.5, max_value=0.9, value=0.7, step=0.05)
+
 bspp = BSPPM(stock_symbol, period, train_ratio)
 raw_data = bspp.fetch_data()
 processed_data = bspp.prepare_data()
