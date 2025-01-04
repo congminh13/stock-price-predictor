@@ -1,7 +1,7 @@
 [client]
 showSidebarNavigation = false
 liveSave = true
-showErrorDetails = "full"
+showErrorDetails = "none"
 
 [theme]
 base = "light"
