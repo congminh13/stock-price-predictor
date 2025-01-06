@@ -1,6 +1,6 @@
 # Stock Price Predictor App (SPP)
 
-Welcome to the **Streamlit Stock Prediction App (SPP)**! This project provides a user-friendly interface for analyzing stock price trends and predictions in Vietnamese.
+Welcome to the **Stock Price Predictor App (SPP)**! This project provides a user-friendly interface for analyzing stock price trends and predictions in Vietnamese.
 
 ### Development
 The live development version of the app can be accessed at: [SPP Streamlit App](https://spp-tcm.streamlit.app/)
