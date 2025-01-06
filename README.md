@@ -2,6 +2,10 @@
 
 Welcome to the **Stock Price Predictor App (SPP)**! This project provides a user-friendly interface for analyzing stock price trends and predictions in Vietnamese.
 
+### About
+
+In this cs project we will analyze effective results & calculate feasibility of linear regression model in predicting stock prices & building improved models.
+
 ### Development
 The live development version of the app can be accessed at: [SPP Streamlit App](https://spp-tcm.streamlit.app/)
 
